@@ -4,40 +4,32 @@
 #include "pharmacy.h"
 using namespace std;
 
-void edit() {
-    string line, noOfTablets, expiry_date, mg, name;
-    string nameToUpdate, expiry, amount;
-    cout << "Enter the name of medicine you want to edit\n";
-    getline(cin, nameToUpdate);
-    cout << "Enter the number of tablets\n";
-    getline(cin, amount);
-    cout << "Enter the new expiry date\n";
-    getline(cin, expiry);
-    cout << "Enter the new mg\n";
-    getline(cin, mg);
+void del() {
+    string line, name_to_del, noOfTablets, expiry_date, mg, name;
+    cout << "Enter the name of medicine you want to delete: ";
+    getline(cin, name_to_del);
 
     bool found = false;
     ifstream file("pharmacy.csv");
     ofstream temp("temp.csv");
+
     while (getline(file, line)) {
         stringstream ss(line);
         getline(ss, noOfTablets, ',');
         getline(ss, name, ',');
         getline(ss, mg, ',');
         getline(ss, expiry_date, ',');
-        if (nameToUpdate == name) {
-            temp << amount << "," << nameToUpdate << "," << mg << "," << expiry << "\n";
+        if (name_to_del == name) {
             found = true;
-        } else {
-            temp << line << "\n";
+            continue;
         }
+        temp << line << "\n";
     }
+
     file.close();
     temp.close();
     remove("pharmacy.csv");
     rename("temp.csv", "pharmacy.csv");
+
     if (found)
-        cout << "medicine updated successfully\n";
-    else
-        cout << "invalid name!\n";
-}
+        cout <<
