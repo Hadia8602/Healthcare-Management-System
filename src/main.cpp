@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    pharmacyMenu(); // call the pharmacy menu
+    pharmacyMenu(); 
     return 0;
 }
 
