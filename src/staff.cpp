@@ -60,7 +60,7 @@ void updateStaff()
     cin.ignore();
 
     temp << "staff_id,name,gender,department,profession,available,shift\n";
-    file.ignore(1000, '\n'); // skip header
+    file.ignore(1000, '\n'); 
 
     while(file >> staff_id)
     {
@@ -121,7 +121,7 @@ void deleteStaff()
     cin.ignore();
 
     temp << "staff_id,name,gender,department,profession,available,shift\n";
-    file.ignore(1000, '\n'); // skip header
+    file.ignore(1000, '\n'); 
 
     while(file >> staff_id)
     {
